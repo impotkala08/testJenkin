@@ -25,10 +25,11 @@ pipeline {
             // when { expression { return isDeployCandidate() } }
             steps {
                 echo 'Building'
-                // script {
-                //     // VARIANT = getBuildType()
-                //     sh "./gradlew -PstorePass=${STORE_PASSWORD} -Pkeystore=${KEYSTORE} -Palias=${KEY_ALIAS} -PkeyPass=${KEY_PASSWORD} bundle${VARIANT}"
-                // }
+                npm install
+                script {
+                    // VARIANT = getBuildType()
+                    sh "./gradlew assembleRelease"
+                }
             }
         }
         // stage('Deploy App to Appcenter Distribute') {
