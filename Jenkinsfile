@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
+    }
     // { dockerfile true }
     // environment {
     //     appName = 'jenkins-blog'
@@ -25,10 +30,10 @@ pipeline {
             // when { expression { return isDeployCandidate() } }
             steps {
                 echo 'Building'
-                npm install
+                
                 script {
                     // VARIANT = getBuildType()
-                    sh "./gradlew assembleRelease"
+                    sh 'npm install'
                 }
             }
         }
