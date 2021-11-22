@@ -203,9 +203,10 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'com.google.code.gson:gson:2.3.1'
+    implementation "androidx.core:core-ktx:1.6.0"  
+    implementation "androidx.core:core:1.6.0" 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation "androidx.core:core-ktx:1.6.0"
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
     def isWebpAnimatedEnabled = (findProperty('expo.webp.animated') ?: "") == "true";
