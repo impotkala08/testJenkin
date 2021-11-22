@@ -2,7 +2,9 @@ pipeline {
     
     agent any
         
-    
+    environment { 
+        CI = 'true'
+    }
     // { dockerfile true }
     // environment {
     //     appName = 'jenkins-blog'
@@ -18,6 +20,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Running Tests'
+                
                 // script {
                 //     // VARIANT = getBuildType()
                 //     sh "./gradlew test${VARIANT}UnitTest"
@@ -28,13 +31,16 @@ pipeline {
             // when { expression { return isDeployCandidate() } }
             steps {
                 echo 'Building'
-                
+                sh 'npm install'
                 // script {
                 //     // VARIANT = getBuildType()
                 //     sh 'npm install'
                 // }
             }
         }
+        
+    
+
         // stage('Deploy App to Appcenter Distribute') {
         //     // when { expression { return isDeployCandidate() } }
         //     steps {
