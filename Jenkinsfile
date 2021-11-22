@@ -1,10 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    
+    agent any
+        
+    
     // { dockerfile true }
     // environment {
     //     appName = 'jenkins-blog'
@@ -31,10 +29,10 @@ pipeline {
             steps {
                 echo 'Building'
                 
-                script {
-                    // VARIANT = getBuildType()
-                    sh 'npm install'
-                }
+                // script {
+                //     // VARIANT = getBuildType()
+                //     sh 'npm install'
+                // }
             }
         }
         // stage('Deploy App to Appcenter Distribute') {
